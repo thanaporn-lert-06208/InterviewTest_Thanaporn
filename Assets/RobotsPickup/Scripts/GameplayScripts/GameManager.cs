@@ -25,6 +25,7 @@ namespace RobutPickUp
         private bool onPlayGame = false;
         private float remainTime = 30f;
         public TMPro.TMP_Text timeRemainTxt;
+        public GameObject tutorialPanel;
 
         #region UNITY
 
@@ -216,6 +217,7 @@ namespace RobutPickUp
             godViewCam.SetActive(false);
             InfoText.text = "GO";
             Invoke(nameof(HideInfoPanel), 1.5f);
+            Invoke(nameof(HideTutorial), 1.5f);
         }
 
         private bool CheckAllPlayerLoadedLevel()
@@ -273,6 +275,11 @@ namespace RobutPickUp
         private void OpenInfoPanel()
         {
             infoPanel.SetActive(true);
+        }
+
+        private void HideTutorial()
+        {
+            tutorialPanel.SetActive(false);
         }
     }
 }

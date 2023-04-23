@@ -53,7 +53,7 @@ public class HomeManager : MonoBehaviour
     private void Connect()
     {
         characterPanel.panel.SetActive(false);
-        PhotonManager.Instance.Connect();
+        PhotonManager.Instance.StartConnect();
     }
 
     private void InitNamePanel()

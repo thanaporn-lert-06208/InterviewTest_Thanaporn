@@ -33,8 +33,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks, IConnectionCallbacks
         string isConnect = PhotonNetwork.IsConnected ? "Connect" : "NotConnect";
         clientStateTxt.text = $"Photon Client State: ({isConnect}) " + PhotonNetwork.NetworkClientState.ToString();
     }
-    public void Connect()
+    public void StartConnect()
     {
+        StartCoroutine(Connect());
+    }
+
+    private IEnumerator Connect()
+    {
+        var alertPanel = AlertPanel.CreateAlertPanel(new AlertPanel.AlertContent("", "On Connecting..."), new AlertPanel.ChoiceContent(0));
+        yield return new WaitUntil(() => PhotonNetwork.IsConnected == false);
+
         PhotonNetwork.LocalPlayer.NickName = Profile.name;
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.ConnectToRegion("asia");

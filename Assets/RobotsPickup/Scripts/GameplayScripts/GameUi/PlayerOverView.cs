@@ -1,13 +1,9 @@
 using System.Collections.Generic;
-
 using UnityEngine;
-using UnityEngine.UI;
-
 using ExitGames.Client.Photon;
 using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
 using Photon.Pun;
-using AsteroidsGame = Photon.Pun.Demo.Asteroids.AsteroidsGame;
 
 namespace RobutPickUp
 {
@@ -29,7 +25,7 @@ namespace RobutPickUp
                 GameObject entry = Instantiate(PlayerOverviewEntryPrefab, panel);
                 entry.transform.localScale = Vector3.one;
                 var info = entry.GetComponent<PlayerInfo>();
-                info.SetInfo(p.NickName, p.GetScore().ToString(), AsteroidsGame.GetColor(p.GetPlayerNumber()));
+                info.SetInfo(p.NickName, p.GetScore().ToString());
 
                 playerListEntries.Add(p.ActorNumber, entry);
             }
