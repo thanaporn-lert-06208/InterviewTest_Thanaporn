@@ -5,25 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scenes/DemoAsteroids-GameScene.unity
-    guid: 98efc37d6307844488eb3e4247dde7e9
-  - enabled: 0
-    path: Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scenes/DemoAsteroids-LobbyScene.unity
-    guid: c8a9d1312a49dc8488a9b32d83d659c7
   - enabled: 1
     path: Assets/RobotsPickup/Scenes/Main.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/RobotsPickup/Scenes/Lobby.unity
     guid: be77a20a08c7e374c9eacdff5e42d38c
-  - enabled: 0
-    path: Assets/RobotsPickup/Scenes/Profile.unity
-    guid: bd0e5ecc6a271ca4b9dcbea4a681b59a
   - enabled: 1
     path: Assets/RobotsPickup/Scenes/GamePlay.unity
     guid: 208c4148fdcd57a41bdabe66ad9cfea4
-  - enabled: 0
-    path: Assets/RobotsPickup/Scenes/GameTestRoom.unity
-    guid: 83ea5a08225eb4c498a2e63fbed88f16
   m_configObjects: {}

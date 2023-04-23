@@ -16,14 +16,16 @@ namespace RobutPickUp
         private static GameManager instance;
 
         public GameObject infoPanel;
-        public Text InfoText;
+        public Text infoText;
 
-        public GameObject[] ItemPrefabs;
+        public GameObject[] itemPrefabs;
+        public GameObject[] deliverPrefabs;
         [SerializeField] private Transform[] itemSpawnPoints;
         [SerializeField] private Transform[] playerSpawnPoints;
+        [SerializeField] private List<Transform> deliverSpawnPoints;
         [SerializeField] private GameObject godViewCam;
         private bool onPlayGame = false;
-        private float remainTime = 30f;
+        private float remainTime = 180f;
         public TMPro.TMP_Text timeRemainTxt;
         public GameObject tutorialPanel;
 
@@ -97,10 +99,8 @@ namespace RobutPickUp
 
         private IEnumerator SpawnItem()
         {
-            for(int i = 0; i < 10; i++)
-            {
-                RandomSpawnItem();
-            }
+            SpawnDeliverPoint();
+            FirstSpawnItemSet();
 
             while (true)
             {
@@ -110,11 +110,29 @@ namespace RobutPickUp
             }
         }
 
+        private void FirstSpawnItemSet()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                RandomSpawnItem();
+            }
+        }
+
         private void RandomSpawnItem()
         {
             Vector3 position = itemSpawnPoints[Random.Range(0, itemSpawnPoints.Length)].position;
-            string itemName = ItemPrefabs[Random.Range(0, ItemPrefabs.Length)].name;
+            string itemName = itemPrefabs[Random.Range(0, itemPrefabs.Length)].name;
             PhotonNetwork.Instantiate(itemName, position, Quaternion.identity);
+        }
+
+        private void SpawnDeliverPoint()
+        {
+            for(int i = 0; i < deliverPrefabs.Length; i++)
+            {
+                int spawnPoint = Random.Range(0, deliverSpawnPoints.Count);
+                PhotonNetwork.Instantiate(deliverPrefabs[i].name, deliverSpawnPoints[spawnPoint].position, Quaternion.identity);
+                deliverSpawnPoints.Remove(deliverSpawnPoints[spawnPoint]);
+            }
         }
 
         private IEnumerator EndOfGame(string winner, int score)
@@ -126,7 +144,7 @@ namespace RobutPickUp
 
             while (timer > 0.0f)
             {
-                InfoText.text = string.Format("Player {0} won with {1} points.\n\n\nReturning to login screen in {2} seconds.", winner, score, timer.ToString("n2"));
+                infoText.text = string.Format("Player {0} won with {1} points.\n\n\nReturning to login screen in {2} seconds.", winner, score, timer.ToString("n2"));
 
 
                 yield return new WaitForEndOfFrame();
@@ -181,8 +199,8 @@ namespace RobutPickUp
                 else
                 {
                     // not all players loaded yet. wait:
-                    Debug.Log("setting text waiting for players! ", this.InfoText);
-                    InfoText.text = "Waiting for other players...";
+                    Debug.Log("setting text waiting for players! ", this.infoText);
+                    infoText.text = "Waiting for other players...";
                 }
             }
 
@@ -215,7 +233,7 @@ namespace RobutPickUp
             }
 
             godViewCam.SetActive(false);
-            InfoText.text = "GO";
+            infoText.text = "GO";
             Invoke(nameof(HideInfoPanel), 1.5f);
             Invoke(nameof(HideTutorial), 1.5f);
         }
