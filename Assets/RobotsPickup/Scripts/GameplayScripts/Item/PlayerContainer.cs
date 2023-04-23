@@ -43,6 +43,7 @@ public class PlayerContainer : MonoBehaviourPun
     {
         if (CheckType(item.type) && CheckWeight(item.weight))
         {
+            item.haveTaken = true;
             if (pv)
                 photonView.RPC(nameof(PunUpdateContainer), RpcTarget.All, item.type, weight + item.weight);
             else

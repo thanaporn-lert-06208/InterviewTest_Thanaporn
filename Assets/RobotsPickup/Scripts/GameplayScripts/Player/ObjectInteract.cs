@@ -21,6 +21,7 @@ public class ObjectInteract : MonoBehaviour
         if (other.CompareTag("Item"))
         {
             var item = other.GetComponent<Item>();
+            if (item.haveTaken == true) return;
             var canPutItem = itemContainer.PickUpItem(item);
             if (canPutItem)
             {

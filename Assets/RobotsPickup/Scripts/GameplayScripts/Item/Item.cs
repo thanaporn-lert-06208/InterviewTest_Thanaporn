@@ -6,6 +6,7 @@ using Photon.Pun;
 
 public class Item : MonoBehaviourPun
 {
+    public bool haveTaken = false;
     public int type;
     public int weight;
     public TMP_Text weightLabel;
@@ -20,7 +21,9 @@ public class Item : MonoBehaviourPun
         if (TryGetComponent<PhotonView>(out var pv))
         {
             if (pv.IsMine)
+            {
                 RPCSetDestroy();
+            }
             else
                 pv.RPC(nameof(RPCSetDestroy), RpcTarget.MasterClient);
         }
