@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aeecb7fdb5a0804ea4c9a6b3a40d5d0, type: 3}
+  m_Name: Chara_Dodo
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 6b2ef00966f26b341ac00bfb04fa12a7, type: 3}
+  prefab: {fileID: 4901240548138188971, guid: 18299d025cbe3bd40b312a008fb5c6c0, type: 3}
