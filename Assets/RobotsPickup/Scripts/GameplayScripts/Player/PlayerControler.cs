@@ -72,6 +72,7 @@ public class PlayerControler : MonoBehaviour
         {
             Destroy(GetComponent<CharacterController>());
             Destroy(GetComponent<PlayerMovement>());
+            Destroy(GetComponent<ObjectInteract>());
             enabled = false;
         }
     }
