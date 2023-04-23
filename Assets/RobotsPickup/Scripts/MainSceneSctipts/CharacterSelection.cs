@@ -14,18 +14,11 @@ public class CharacterSelection : MonoBehaviour
 
     void Start()
     {
-        if (Profile.character)
-            Debug.Log($"Profile.character : {Profile.character.name}");
         foreach (var character in characterList.characters)
         {
             var newChoice = Choice.CreateButton(buttonPrefab, buttonContent, character.name, character.image, buttonGroup, () => { ChooseCharacter(character); });
             if (choosedCharacter == null || character == Profile.character)
             {
-                if (choosedCharacter == null)
-                    Debug.Log("choosedCharacter == null");
-                else if (character == Profile.character)
-                    Debug.Log("character == Profile.character");
-
                 newChoice.onClick?.Invoke();
             }
         }
@@ -33,7 +26,6 @@ public class CharacterSelection : MonoBehaviour
 
     private void ChooseCharacter(Character character)
     {
-        Debug.Log("Choose " + character.name);
         choosedCharacter = character;
         characterName.text = character.name;
     }
