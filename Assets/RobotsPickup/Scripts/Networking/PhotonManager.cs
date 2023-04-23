@@ -59,7 +59,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks, IConnectionCallbacks
 
     public override void OnJoinedLobby()
     {
-        Debug.Log("PhotManager OnJoinedLobby");
         if (!SceneControl.GetCurrentSceneName().Contains("Lobby"))
             SceneControl.LoadScene("Lobby");
     }

@@ -50,7 +50,6 @@ public class AlertPanel : MonoBehaviour
         }
         else
         {
-            Debug.Log("rightButton Close");
             rightButton.gameObject.SetActive(false);
         }
 

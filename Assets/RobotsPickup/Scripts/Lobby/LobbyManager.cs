@@ -132,8 +132,6 @@ namespace PhotonLobby
 
         public override void OnJoinedRoom()
         {
-            Debug.Log("OnJoinedRoom");
-            // joining (or entering) a room invalidates any cached lobby room list (even if LeaveLobby was not called due to just joining a room)
             cachedRoomList.Clear();
             roomNameTxt.text = PhotonNetwork.CurrentRoom.Name;
 
